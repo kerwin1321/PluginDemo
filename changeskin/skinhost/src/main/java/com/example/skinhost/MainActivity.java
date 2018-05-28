@@ -1,11 +1,7 @@
 package com.example.skinhost;
 
-import android.Manifest;
-import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.os.Environment;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.ContextCompat;
 import android.view.View;
 import android.widget.Button;
 
@@ -55,7 +51,7 @@ public class MainActivity extends SkinPlugActivity implements View.OnClickListen
 
     private void night() {
 
-        loadSkinPlug();;
+        loadSkinPlug();
     }
 
 
@@ -63,9 +59,9 @@ public class MainActivity extends SkinPlugActivity implements View.OnClickListen
      * 加载皮肤插件
      */
     private void loadSkinPlug() {
-        // TODO 需要设置权限
+        // TODO 6.0及以上需要设置权限
         File externalStorageDirectory = Environment.getExternalStorageDirectory();
-        File file = new File(externalStorageDirectory, "skinplug.apk");
+        File file = new File(externalStorageDirectory, "skinplugin.apk");
         SkinPlugManager.getInstance().changeSkin(file.getAbsolutePath());
 
         updateSkin();

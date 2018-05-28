@@ -10,9 +10,14 @@
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/changeskin" />
+            <option value="$PROJECT_DIR$/changeskin/skindemo" />
             <option value="$PROJECT_DIR$/changeskin/skinhost" />
             <option value="$PROJECT_DIR$/changeskin/skinlibrary" />
             <option value="$PROJECT_DIR$/changeskin/skinplugin" />
+            <option value="$PROJECT_DIR$/plugin" />
+            <option value="$PROJECT_DIR$/plugin/mainapp" />
+            <option value="$PROJECT_DIR$/plugin/pluginapp" />
+            <option value="$PROJECT_DIR$/plugin/pluginlibrary" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

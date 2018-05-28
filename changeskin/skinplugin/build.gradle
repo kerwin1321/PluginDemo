@@ -12,7 +12,7 @@ android {
     buildToolsVersion rootProject.ext.android["buildToolsVersion"]
 
     defaultConfig {
-        applicationId "com.zhangke.skinplug"
+        applicationId "com.example.skinplugin"
         minSdkVersion rootProject.ext.android["minSdkVersion"]
         targetSdkVersion rootProject.ext.android["targetSdkVersion"]
 
