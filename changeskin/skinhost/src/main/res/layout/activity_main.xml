@@ -25,5 +25,11 @@
         android:textColor="@color/textcolor"
         android:text="晚上模式"/>
 
+    <ImageView
+        android:layout_width="match_parent"
+        android:src="@drawable/image"
+        android:layout_marginTop="10dp"
+        android:layout_height="wrap_content" />
+
 
 </LinearLayout>

@@ -87,7 +87,8 @@ public class SkinPlugManager implements IResParse {
                     , context.getResources().getConfiguration());
 
             // 缓存，用于多个皮肤切换时使用
-            return skinResMap.put(path, resources);
+            skinResMap.put(path, resources);
+            return resources;
         } catch (InstantiationException e) {
             e.printStackTrace();
         } catch (IllegalAccessException e) {

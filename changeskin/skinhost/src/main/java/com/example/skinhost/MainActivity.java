@@ -54,7 +54,8 @@ public class MainActivity extends SkinPlugActivity implements View.OnClickListen
     }
 
     private void night() {
-        requestPermission();
+
+        loadSkinPlug();;
     }
 
 
@@ -62,6 +63,7 @@ public class MainActivity extends SkinPlugActivity implements View.OnClickListen
      * 加载皮肤插件
      */
     private void loadSkinPlug() {
+        // TODO 需要设置权限
         File externalStorageDirectory = Environment.getExternalStorageDirectory();
         File file = new File(externalStorageDirectory, "skinplug.apk");
         SkinPlugManager.getInstance().changeSkin(file.getAbsolutePath());
@@ -69,31 +71,5 @@ public class MainActivity extends SkinPlugActivity implements View.OnClickListen
         updateSkin();
     }
 
-    private void requestPermission() {
-        if (ContextCompat.checkSelfPermission(this,
-                Manifest.permission.READ_CONTACTS)
-                != PackageManager.PERMISSION_GRANTED) {
-            if (ActivityCompat.shouldShowRequestPermissionRationale(this,
-                    Manifest.permission.READ_EXTERNAL_STORAGE)) {
-            } else {
-                ActivityCompat.requestPermissions(this,
-                        new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
-                        1);
-            }
-        }
 
-
-    }
-
-    @Override
-    public void onRequestPermissionsResult(int requestCode,
-                                           String permissions[], int[] grantResults) {
-        switch (requestCode) {
-            case 1: {
-                loadSkinPlug();
-
-                return;
-            }
-        }
-    }
 }

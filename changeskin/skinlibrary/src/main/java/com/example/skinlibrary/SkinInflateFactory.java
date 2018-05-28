@@ -35,7 +35,7 @@ public class SkinInflateFactory implements LayoutInflater.Factory2 {
     @Override
     public View onCreateView(View parent, String name, Context context, AttributeSet attrs) {
         View view = null;
-        if (name.indexOf(".") == -1) {
+        if (!name.contains(".")) {// 原生控件
             for (String prefix : prefixList) {
                 view = createView(context, attrs, prefix + name);
                 if (view != null) {
@@ -43,6 +43,7 @@ public class SkinInflateFactory implements LayoutInflater.Factory2 {
                 }
             }
         } else {
+            // 第三方控件
             view = createView(context, attrs, name);
         }
 
@@ -92,7 +93,6 @@ public class SkinInflateFactory implements LayoutInflater.Factory2 {
             SkinAttr skinAttr = null;
 
             String attributeName = attrs.getAttributeName(i);  // 属性名
-
             if (SkinAttr.SKIN_ATTR_LIST.contains(attributeName)) {
 
                 String attributeValue = attrs.getAttributeValue(i);
@@ -102,20 +102,23 @@ public class SkinInflateFactory implements LayoutInflater.Factory2 {
 
                 // 根据属性名称创建一个属性
                 skinAttr = SkinAttr.create(attributeName, resourceTypeName, resourceEntryName, resId);
-
             }
 
-            // 存储所有需要换肤的属性
+            // 存储view所有需要换肤的属性
             if (skinAttr != null) {
                 attrList.add(skinAttr);
             }
         }
 
-        SkinViewItem skinViewItem = new SkinViewItem(view, attrList);
-        skinViewItem.apply();
 
-        // 缓存，当页面属性的使用使用
-        attrViewMap.put(view, skinViewItem);
+        if (attrList.size() != 0) {
+            SkinViewItem skinViewItem = new SkinViewItem(view, attrList);
+            skinViewItem.apply();
+
+            // 缓存，当页面属性的使用使用
+            attrViewMap.put(view, skinViewItem);
+        }
+
     }
 
     public void update() {

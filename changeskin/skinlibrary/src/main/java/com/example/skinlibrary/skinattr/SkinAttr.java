@@ -12,11 +12,17 @@ import java.util.List;
  */
 public abstract class SkinAttr {
 
+    public static final String ATTR_TEXTCOLOR = "textColor";
+    public static final String ATTR_BACKGROUND = "background";
+    public static final String ATTR_SRC = "src";
+
+
     public static List<String> SKIN_ATTR_LIST = new ArrayList<>();
 
     static {
-        SKIN_ATTR_LIST.add("textColor");
-        SKIN_ATTR_LIST.add("background");
+        SKIN_ATTR_LIST.add(ATTR_TEXTCOLOR);
+        SKIN_ATTR_LIST.add(ATTR_BACKGROUND);
+        SKIN_ATTR_LIST.add(ATTR_SRC);
     }
 
 
@@ -62,10 +68,12 @@ public abstract class SkinAttr {
      */
     public static SkinAttr create(String attributeName, String resourceTypeName, String resourceEntryName, int resId) {
         SkinAttr skinAttr = null;
-        if ("textColor".equals(attributeName)) {
+        if (ATTR_TEXTCOLOR.equals(attributeName)) {
             skinAttr = new TextColorSkinAttr(attributeName, resourceTypeName, resourceEntryName, resId);
-        } else if ("background".equals(attributeName)) {
+        } else if (ATTR_BACKGROUND.equals(attributeName)) {
             skinAttr = new BackgroundSkinAttr(attributeName, resourceTypeName, resourceEntryName, resId);
+        } else if (ATTR_SRC.equals(attributeName)) {
+            skinAttr = new SrcSkinAttr(attributeName, resourceTypeName, resourceEntryName, resId);
         }
         return skinAttr;
     }
