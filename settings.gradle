@@ -1,0 +1,3 @@
+include ':app'
+
+include ':changeskin:skinhost', ':changeskin:skinplugin', ':changeskin:skinlibrary'
