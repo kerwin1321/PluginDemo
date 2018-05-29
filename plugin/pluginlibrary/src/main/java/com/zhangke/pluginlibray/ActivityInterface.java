@@ -11,6 +11,12 @@ import android.view.MotionEvent;
  */
 public interface ActivityInterface {
 
+    /**
+     * 依赖宿主程序的上下文
+     * @param activity
+     */
+    public void attach(Activity activity);
+
     public void onCreate(Bundle savedInstanceState);
     public void onStart();
     public void onResume();
@@ -21,9 +27,5 @@ public interface ActivityInterface {
     public void onBackPressed();
     public boolean onTouchEvent(MotionEvent event);
 
-    /**
-     * 依赖宿主程序的上下文
-     * @param activity
-     */
-    public void attach(Activity activity);
+
 }

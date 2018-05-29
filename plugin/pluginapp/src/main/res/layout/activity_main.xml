@@ -9,12 +9,20 @@
 
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="100dp"
+        android:gravity="center"
         android:text="这是插件app" />
 
+    <ImageView
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:layout_gravity="center"
+        android:src="@mipmap/image" />
+
     <Button
+        android:id="@+id/btn_jump"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="跳转页面" />
+        android:text="跳转到二级页面" />
 
 </LinearLayout>

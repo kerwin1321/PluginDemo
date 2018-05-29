@@ -1,20 +1,15 @@
-package com.zhangke.mainapp;
+package com.zhangke.pluginlibray;
 
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.WindowManager;
-
-import com.zhangke.pluginlibray.ActivityInterface;
-import com.zhangke.pluginlibray.PluginManager;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 
-public class PluginActivity extends Activity {
+public class ProxyPluginActivity extends Activity {
 
     private String className;
     private ActivityInterface activityInterface;
@@ -32,8 +27,8 @@ public class PluginActivity extends Activity {
 
             // 获取插件实例
             activityInterface = (ActivityInterface) activityObject;
-
             activityInterface.attach(this);
+
             Bundle bundle = new Bundle();
             activityInterface.onCreate(bundle);
 
@@ -86,18 +81,12 @@ public class PluginActivity extends Activity {
     }
 
 
-
-
-    /**
-     * 开启插件页面
-     *
-     * @param context
-     * @param className
-     */
-    public static void startActivity(Context context, String className) {
-        Intent intent = new Intent();
-        intent.setClass(context, PluginActivity.class);
-        intent.putExtra("className", className);
-        context.startActivity(intent);
+    @Override
+    public void startActivity(Intent intent) {
+        String className = intent.getStringExtra("className");
+        Intent intent1 = new Intent(this, ProxyPluginActivity.class);
+        intent1.putExtra("className", className);
+        super.startActivity(intent1);
     }
+
 }

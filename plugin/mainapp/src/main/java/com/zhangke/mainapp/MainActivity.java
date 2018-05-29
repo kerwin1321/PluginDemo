@@ -1,10 +1,12 @@
 package com.zhangke.mainapp;
 
+import android.content.Intent;
 import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
+import com.zhangke.pluginlibray.ProxyPluginActivity;
 import com.zhangke.pluginlibray.PluginManager;
 
 import java.io.File;
@@ -40,8 +42,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void showPlugin() {
-
-        PluginActivity.startActivity(this, PluginManager.getInstance().getEntryActivityName());
+        Intent intent = new Intent();
+        intent.setClass(this, ProxyPluginActivity.class);
+        intent.putExtra("className", PluginManager.getInstance().getEntryActivityName());
+        startActivity(intent);
     }
 
 }
